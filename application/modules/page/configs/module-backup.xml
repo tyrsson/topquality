@@ -1,0 +1,43 @@
+<config>
+	<admin-page>
+	    <page-manager>
+	        <label>Content Manager</label>
+	        <uri>/admin/page</uri> 
+    	    <resource>page</resource>
+	        <privilege>page.manage</privilege>
+	        <pages>
+	            
+	            <collections>
+	                <label>Page Categories</label>
+	                <uri></uri>
+	                <pages>
+	                    <manage-collections>
+	                		<label>Manage Categories</label>
+	                		<uri>/admin/page/manage/categories</uri>
+	            		</manage-collections>
+	                    <create-collection>
+	                        <label>New Category</label>
+	                		<uri>/admin/page/create/category</uri>
+	                    </create-collection>
+	                </pages>
+	            </collections>
+	            <admin-manage-pages>
+	                <label>Pages</label>
+	                <uri></uri>
+	                <pages>
+	                    <pageManager>
+	                        <label>Manage Pages</label>
+	                        <uri>/admin/page</uri>
+	                    </pageManager>
+	                    <create-page>
+	                        <label>New Page</label>
+	                        <uri>/admin/page/create</uri>
+	                    </create-page>
+	                </pages>
+	            </admin-manage-pages>
+	            
+	            
+	        </pages>
+	    </page-manager>
+	</admin-page>
+</config>

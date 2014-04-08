@@ -1,0 +1,59 @@
+<!--<div data-dojo-id="page" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'top', splitter: 'false'">-->
+<script type="text/javascript">
+require(["dojox/widget/AutoRotator"]);
+</script>
+	<div id="indexBorderContainer" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="design: 'headline', gutters: 'false'">
+		
+			
+			<?php
+			if(isset($this->page) && $this->page !== null) {
+				if($this->acl->isAllowed($this->user->role, $this->module, "$this->module.manage")) {
+			?>
+			<div id="adminMenu" data-dojo-id="title" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'top'">
+			Admin tools
+					<a href="/admin/page/create">New</a>
+					<a href="/admin/page/edit/<?php echo $this->page['uri']; ?>">Edit</a>
+					<?php
+					if(!$this->isHome) {
+					?>
+						<a href="/admin/page/delete/<?php echo $this->page['uri']; ?>">Delete</a>
+					<?php
+					}
+					?>
+					</div>
+		    <?php 
+			}
+			?>
+		
+		<?php 
+		$this->appSettings->showPageHeading = true;
+		if($this->appSettings->showPageHeading) {
+		?>
+			<div id="homeTitle" data-dojo-id="pageTitle" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'left'">
+			    <?php 
+			    echo $this->action('index', 'index', 'slider');
+			    ?>
+			</div>
+		<?php 
+		}
+		?>
+		<div id="homeContent" data-dojo-id="pageContent" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'left'">
+    		<div>
+    		<?php
+                echo $this->page['content'];
+    
+    			if($this->showFb) {
+    			//echo $this->faceBookHelper($this->fb, $fbTitle = $this->page['pageName'], $fbType = null, $fbUrl = null, $fbImage = null, $fbsiteName = null, $type = 'page');
+    			}
+    		} 
+    		?>
+    		</div>
+		</div>
+		  <div class="clear"></div>
+	</div>
+	<div data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="design: 'headline', gutters: 'false'" style="z-index: 0; margin: 0 auto; max-width: 1140px; width: 100%; min-height: 400px;">
+	   <?php
+			echo $this->featured('div', array('class' => 'featured'));
+	   ?>
+	</div>
+<!-- </div> -->

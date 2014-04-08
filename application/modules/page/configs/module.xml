@@ -1,0 +1,10 @@
+<config>
+	<admin-page>
+	    <page-manager>
+	        <label>Content Manager</label>
+	        <uri>/admin/page/manager</uri> 
+    	    <resource>page</resource>
+	        <privilege>page.manage</privilege>
+	    </page-manager>
+	</admin-page>
+</config>

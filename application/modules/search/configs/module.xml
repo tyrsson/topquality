@@ -1,0 +1,8 @@
+<config>
+        <admin-search>
+            <manage-search>
+                <label>Search</label>
+                <uri>/admin/search/index</uri>
+            </manage-search>
+        </admin-search>
+</config>

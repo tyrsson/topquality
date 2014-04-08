@@ -1,0 +1,61 @@
+<config>
+	<admin>
+		<adminnav>
+			<label>Admin</label>
+			<uri>/admin</uri>
+			<resource>resources.admin.index.index</resource>
+			<privilege>admin.manage.all</privilege>
+			<order>999</order>
+		</adminnav>
+	</admin>
+    <admin-admin>
+        	<settings>
+        	    <label>Settings</label>
+        	    <uri>/admin/settings</uri>
+        	    <resource>admin:area</resource>
+        	    <privilege>manage-all</privilege>
+        	    <order>100</order>
+        	</settings>
+            <return-home>
+                <label>Return Home</label>
+                <uri>/</uri>
+                <resource>admin:area</resource>
+                <privilege>manage-all</privilege>
+                <order>1001</order>
+            </return-home> 
+        	<dxtools>
+            	<label>Dev Tools</label>
+            	<uri><!-- /admin/dxadmin/summary --></uri>
+            	<resource>dxadmin-tools</resource>
+            	<privilege>dxadmin.manage.all</privilege>
+            	<pages>
+					<skin-settings>
+	            		<label>Skin Settings</label>
+						<uri><!-- /admin/skins/settings --></uri>
+						<resource>dxadmin-tools</resource>
+	            		<privilege>dxadmin.manage.all</privilege>
+			    		<cmd>/admin/skins/settings</cmd>
+			    		<iconClass>dijitIconConfigure</iconClass>
+					</skin-settings>
+	        		<addmodsettings>
+	            		<label>Add Module Settings</label>
+						<uri>/admin/settings/addmodsettings</uri>
+						<resource>dxadmin-tools</resource>
+	            		<privilege>dxadmin.manage.all</privilege>
+	        		</addmodsettings>
+	        		<edit-lang>
+	        		    <label>Edit Language Strings</label>
+	        		    <uri>/admin/language</uri>
+	        		    <resource>dxadmin-tools</resource>
+	            		<privilege>dxadmin.manage.all</privilege>
+	        		</edit-lang>
+	        		<add-lang>
+	        		    <label>Add Language Strings</label>
+	        		    <uri>/admin/language/add</uri>
+	        		    <resource>dxadmin-tools</resource>
+	            		<privilege>dxadmin.manage.all</privilege>
+	        		</add-lang>
+        		</pages>
+        	</dxtools>
+    </admin-admin>
+</config>

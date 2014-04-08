@@ -1,0 +1,79 @@
+<!-- <div data-dojo-id="page" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'top', splitter: 'false'"> -->
+	<div data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="design: 'headline', gutters: 'false'" style="z-index: 0; margin: 0 auto; max-width: 1140px;">
+		
+			<?php
+			if(isset($this->page) && $this->page !== null) {
+				if($this->acl->isAllowed($this->user->role, 'page', "$this->module.manage")) {
+			?>
+			<div id="adminMenu" data-dojo-id="title" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'top'">
+			Admin tools
+					<a href="/admin/page/create">New</a>
+					<a href="/admin/page/edit/<?php echo $this->page->uri; ?>">Edit</a>
+					<?php
+					if(!$this->isHome) {
+					?>
+						<a href="/admin/page/delete/<?php echo $this->page->uri; ?>">Delete</a>
+					<?php
+					}
+					?>
+					
+					</div>
+		    <?php 
+			}
+			?>
+		
+		<?php 
+		$this->appSettings->showPageHeading = true;
+		if($this->appSettings->showPageHeading) {
+		?>
+<!-- 			<div id="pageTitle" data-dojo-id="pageTitle" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'top'"> -->
+			<div id="pageTitle" style="margin-top: 50px;">
+				<h2>
+					<?php 
+						//echo ucwords($this->subcat->categoryName) . ' >> ' . ucwords($this->page['label']); 
+						echo ucwords($this->page->label);
+					?>
+				</h2>
+			</div>
+			<div class="clear"></div>
+		<?php 
+		}
+		//echo $this->childPages('div', array('class' => 'feat'));
+		//Zend_Debug::dump($this->subcat);
+		?>
+		<?php 
+		$cats = new System_Db_Categories();
+		//$navigation = $cats->getTree()->toNavigation($this->page->label, true);
+		
+		//$container = $cats->getTree()->toSubNavigation($this->page->uri, true);
+		$container = new Zend_Navigation($cats->fetchPagesByCategoryUri($this->catUri)->toArray());
+		//Zend_Debug::dump($cats->fetchPagesByCategoryUri($this->catUri)->toArray());
+		//Zend_Debug::dump($container->toArray());
+// 		foreach($sidebar->pages as $sideBarPage) {
+//             $sideBarPage->visible = true;
+//         }
+		$sidebarOptions = array('ulClass' => 'subpage-list');
+        
+		echo $this->navigation()->menu()->renderMenu($container, $sidebarOptions);
+		?>
+<!-- 		<ul class="subpage-list"> -->
+<!-- 		  <li><a href="/About-Us/FAQs">FAQ's</a></li> -->
+<!-- 		  <li><a href="/Services/Infidelity-Investigative-Serviecs"></a>Infidelity Investigative Serviecs</li> -->
+<!-- 		  <li><a href="/#">Demo Page</a></li> -->
+<!-- 		</ul> -->
+		
+		<!--<div id="homeContent" data-dojo-id="pageContent" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'center', splitter: 'false'">-->
+		<div id="pageContent">
+		<?php
+		      if(isset($this->page->content) && !empty($this->page->content)) {
+                    echo $this->page->content;
+                    
+			     if($this->showFb) {
+			         //echo $this->faceBookHelper($this->fb, $fbTitle = $this->page['pageName'], $fbType = null, $fbUrl = null, $fbImage = null, $fbsiteName = null, $type = 'page');
+			     }
+			  }
+		} 
+		?>
+		</div>
+	</div>
+<!-- </div> -->

@@ -1,0 +1,10 @@
+<config>
+	<admin-slider>
+	    <slider-manager>
+	        <label>Slider Manager</label>
+	        <uri>/admin/slider</uri> 
+    	    <resource>page</resource>
+	        <privilege>page.manage</privilege>
+	    </slider-manager>
+	</admin-slider>
+</config>
